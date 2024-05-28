@@ -1,5 +1,4 @@
 import { Grid, Box, Link, Typography } from "@mui/material";
-import logo2 from "../image/footer-logo-2.svg";
 import blobImg from "../image/footer-blob-gradient.svg";
 import data from "../data/config.json";
 import { styled } from "@mui/system";
@@ -118,7 +117,7 @@ export const FooterSection = () => {
                 marginTop: "30px",
               }}
             >
-              <img src={logo2} alt="Lymemind footer logo" />
+              
             </Box>
           </Grid>
         </Grid>
