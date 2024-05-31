@@ -91,7 +91,7 @@ export const PublicPage = () => {
       <AvailableData />
       {hasUserId && <DataCollections />}
       {/*<NewsSection /> */}
-      <ContactInformation />
+      {/*<ContactInformation />*/}
       <ContactUs />
       <StayConnected />
       <FooterSection />

@@ -65,8 +65,8 @@ export const CollectionCard = ({ id }) => {
         </Typography>
       </Box>
     );
-  if (error) return "There was a problem loading this page";
-
+  if (error) return "Collection Missing";
+  
   return (
     <Grid
       item
