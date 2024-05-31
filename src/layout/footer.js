@@ -58,8 +58,8 @@ export const FooterSection = () => {
           <Grid item xs={12} lg={1} className="imageFooter">
             <img
               src={data.general.footer.image_url}
-              alt="Lymemind footer logo"
-              style={{ width: "111px", height: "114px" }}
+              alt="footer logo"
+              style={{ width: "111px" }}
             />
           </Grid>
           <Grid item xs={12} lg={5} sx={{ padding: "0 25px" }}>
