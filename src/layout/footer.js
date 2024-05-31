@@ -145,7 +145,7 @@ export const FooterSection = () => {
           <Grid item xs={12} lg={4} className="rightsLogo">
             <img
               src={data.general.project_logo}
-              alt="Lymemind logo"
+              alt="logo"
               style={{ width: "182px", height: "auto" }}
             />
           </Grid>

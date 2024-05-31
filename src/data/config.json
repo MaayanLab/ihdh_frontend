@@ -65,7 +65,7 @@
     "subtitle": "Innovation Health Data Hub (IHDH) provides a unified resource to deposit, archive, and share data collected by researchers funded by the Steven and Alexandra Cohen Foundation.",
     "about": "Explore Available Research Related Datasets and Connect with other Researchers",
     "news": {
-      "name": "LymeMIND",
+      "name": "IHDH",
       "username": "LymeMind",
       "profile_image_url": "https://pbs.twimg.com/profile_images/1284208844802076674/exJsbO5w_normal.png"
     },
@@ -110,7 +110,7 @@
     "general_contact": {
       "adress": "770 Lexington Avenue, 15th Floor, New York, NY 10065",
       "phone": "212-731-7071",
-      "email": "lymemind@mssm.edu"
+      "email": "support@ihdh.io"
     },
     "sso": [
       {

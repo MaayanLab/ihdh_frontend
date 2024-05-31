@@ -131,7 +131,7 @@ export const UserMenu = ({ sidebarOpen, toggleSidebar, landingPage=false }) => {
         {!sidebarOpen && (
           <Typography component="div" sx={{ marginLeft: "99px" }}>
             <Link to="/">
-              <img src={logo} alt="Lymemind logo" />
+              <img src={logo} alt="logo" />
             </Link>
           </Typography>
         )}

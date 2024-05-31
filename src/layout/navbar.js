@@ -89,7 +89,7 @@ export const NavBar = () => {
             <Link to="/">
               <img
                 src={data.general.project_logo}
-                alt="Lymemind logo"
+                alt="logo"
                 className="navbarLogo"
               />
             </Link>
