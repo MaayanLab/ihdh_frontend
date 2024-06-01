@@ -6,26 +6,20 @@
     "project_icon": "/image/favicon-32x32.png?v=b92f955b9316279dc79178f906b24804",
     "socialmedia": [
       {
-        "name": "twitter",
-        "icon_url": "/image/twitter-min.svg",
-        "alt_name": "Twitter",
-        "url": "https://twitter.com/lymemind"
-      },
-      {
-        "name": "youtube",
-        "icon_url": "/image/youtube-icon.svg",
-        "alt_name": "Youtube",
-        "url": "https://twitter.com/lymemind"
+        "name": "issues",
+        "icon_url": "/image/github-icon.svg",
+        "alt_name": "Submit Issue",
+        "url": "https://github.com/MaayanLab/datacrossways/issues"
       },
       {
         "name": "github",
         "icon_url": "/image/github-icon.svg",
-        "alt_name": "GitHub",
+        "alt_name": "Source Code",
         "url": "https://github.com/MaayanLab/datacrossways"
       }
     ],
     "general_contact": {
-      "adress": "770 Lexington Avenue, 15th Floor, New York, NY 10065",
+      "adress": "One Gustave L. Levi Place, Box 1603, New York, NY 10029, USA",
       "phone": "212-731-7071",
       "email": "lymemind@mssm.edu"
     },
@@ -108,7 +102,7 @@
       "ids_list": [2]
     },
     "general_contact": {
-      "adress": "770 Lexington Avenue, 15th Floor, New York, NY 10065",
+      "adress": "One Gustave L. Levi Place, Box 1603, New York, NY 10029, USA",
       "phone": "212-731-7071",
       "email": "support@ihdh.io"
     },

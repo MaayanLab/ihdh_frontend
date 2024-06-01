@@ -45,8 +45,8 @@ export const ContactUs = () => {
         className="subtitleSection"
         sx={{ color: "#FFF", marginBottom: "80px" }}
       >
-        Icahn School of Medicine at Mount Sinai{" "}
-        <span style={{ margin: "0 15px" }}>|</span> {data.general.projectname}
+        Innovative Health Data Hub{" "}
+        <span style={{ margin: "0 15px" }}>|</span>Mount Sinai<span style={{ margin: "0 15px" }}>|</span>Center for Bioinformatics
       </Typography>
       <Grid
         container
@@ -89,19 +89,7 @@ export const ContactUs = () => {
             margin: "auto 25px",
           }}
         >
-          <Typography variant="body4">
-            <img
-              src={telIcon}
-              alt="telephone icon"
-              style={{
-                position: "absolute",
-                margin: " 0 0 0 -25px",
-                maxWidth: "20px",
-                maxHeight: "20px",
-              }}
-            />{" "}
-            {data.startpage.general_contact.phone}
-          </Typography>
+          
         </Grid>
         <Grid
           item
