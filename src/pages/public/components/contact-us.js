@@ -46,7 +46,7 @@ export const ContactUs = () => {
         sx={{ color: "#FFF", marginBottom: "80px" }}
       >
         Innovative Health Data Hub{" "}
-        <span style={{ margin: "0 15px" }}>|</span>Mount Sinai<span style={{ margin: "0 15px" }}>|</span>Center for Bioinformatics
+        <span style={{ margin: "0 15px" }}>|</span>Mount Sinai Center for Bioinformatics
       </Typography>
       <Grid
         container
