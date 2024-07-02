@@ -298,7 +298,7 @@ export const UserMenu = ({ sidebarOpen, toggleSidebar }) => {
               )}
             <a
               className="modalLinks"
-              href="https://lymecloud.org/api/docs/"
+              href="https://ihdh.io/api/docs/"
               target="_blank"
               rel="noreferrer"
             >
@@ -312,7 +312,7 @@ export const UserMenu = ({ sidebarOpen, toggleSidebar }) => {
             </a>
             <a
               className="modalLinks"
-              href="https://lymecloud.org/https://lymecloud.org/user_guide.pdf"
+              href="https://ihdh.io/user_guide.pdf"
               target="_blank"
               rel="noreferrer"
             >
