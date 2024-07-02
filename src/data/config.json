@@ -25,7 +25,7 @@
     },
     "footer": {
       "image_url": "/image/footer-logo.png",
-      "description": "The development of the Innovation Health Data Hub (IHDH) is made possible by generous support from the Cohen Foundation. Launched in 2015, the initiative initially sought to advance research for tickborne illnesses, but since then expanded to cover other disease areas were there is an unmet need for investment.",
+      "description": "The development of the Innovative Health Data Hub (IHDH) is made possible by generous support from the Steven & Alexandra Cohen Foundation. Launched in 2015, the initiative initially sought to advance research for tickborne illnesses, but since then expanded to cover other disease areas were there is an unmet need for investment.",
       "links": [
         {
           "text": "Home",
@@ -55,8 +55,8 @@
     }
   },
   "startpage": {
-    "title": "Innovation Health Data Hub",
-    "subtitle": "Innovation Health Data Hub (IHDH) provides a unified resource to deposit, archive, and share data collected by researchers funded by the Steven and Alexandra Cohen Foundation.",
+    "title": "Innovative Health Data Hub",
+    "subtitle": "Innovative Health Data Hub (IHDH) provides a unified resource to deposit, archive, and share data collected by researchers funded by the Steven & Alexandra Cohen Foundation.",
     "about": "Explore Available Research Related Datasets and Connect with other Researchers",
     "news": {
       "name": "IHDH",
@@ -98,7 +98,7 @@
       }
     ],
     "collections_highlight": {
-      "title": "Innovation Health Data Hub (IHDH) supports the inclusion of diverse data types including genomics, transcriptomics, and other omics as well as phenotypic data collected from patients, model organisms, and pathogens.",
+      "title": "Innovative Health Data Hub (IHDH) supports the inclusion of diverse data types including genomics, transcriptomics, and other omics as well as phenotypic data collected from patients, model organisms, and pathogens.",
       "ids_list": [2]
     },
     "general_contact": {
