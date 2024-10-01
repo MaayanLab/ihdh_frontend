@@ -240,7 +240,7 @@ export const EditCollectionForm = ({
       </Grid>
       <Grid container justifyContent="space-between" margin="24px 0">
         <Typography variant="modalTitle" sx={{ color: "#0F7F90" }}>
-          Make This Collection Public:{" "}
+          Make this Collection Public:{" "}
         </Typography>
         {isEdit ? (
           <CustomSwitch
@@ -260,7 +260,7 @@ export const EditCollectionForm = ({
       </Grid>
       <Grid container justifyContent="space-between" margin="24px 0">
         <Typography variant="modalTitle" sx={{ color: "#0F7F90" }}>
-          Make this collection Visible:{" "}
+          Make this Collection Visible:{" "}
         </Typography>
         {isEdit ? (
           <CustomSwitch

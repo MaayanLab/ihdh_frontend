@@ -48,8 +48,8 @@ export const DragAndDrop = () => {
       <Box {...getRootProps({ className: "dropZone" })}>
         <input {...getInputProps()} />
         <Typography sx={{ textAlign: "center", fontSize: "14px" }}>
-          <span className="clickText">Click here</span> or Drag and drop your
-          files here to upload
+          <span className="clickText">Click here</span> or drag and drop your
+          files
         </Typography>
         <Typography
           sx={{
@@ -71,7 +71,7 @@ export const DragAndDrop = () => {
             textAlign: "center",
           }}
         >
-          Maximum of files: {data.my_files_page.upload_files.max_n_files}
+          Maximum number of files: {data.my_files_page.upload_files.max_n_files}
         </Typography>
       </Box>
     </Container>

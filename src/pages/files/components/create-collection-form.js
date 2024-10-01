@@ -215,7 +215,7 @@ export const CreateCollectionForm = ({
             margin="24px 0"
           >
             <Typography variant="modalTitle" sx={{ color: "#0F7F90" }}>
-              Make This Collection Public:{" "}
+              Make this Collection Public:{" "}
             </Typography>
             <CustomSwitch
               name="accessibility"
@@ -231,7 +231,7 @@ export const CreateCollectionForm = ({
             margin="24px 0"
           >
             <Typography variant="modalTitle" sx={{ color: "#0F7F90" }}>
-              Make this collection Visible:{" "}
+              Make this Collection Visible:{" "}
             </Typography>
 
             <CustomSwitch
