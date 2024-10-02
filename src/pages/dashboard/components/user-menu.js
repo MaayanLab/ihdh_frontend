@@ -137,15 +137,7 @@ export const UserMenu = ({ sidebarOpen, toggleSidebar, landingPage=false }) => {
               </Link>
             </Typography>
 
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link to="/">
-              <img
-                src={data.general.project_logo}
-                alt="logo"
-                className="navbarLogo"
-              />
-            </Link>
-            </Typography>
+            
           </>
         )}
       </Box>
