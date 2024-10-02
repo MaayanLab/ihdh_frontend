@@ -29,14 +29,6 @@ export const MainKeyTable = ({ sidebarOpen, toggleSidebar, user }) => {
 
   return (
     <>
-
-              <Typography
-                variant="subtitle1"
-                sx={{ textAlign: "left", margin: "24px auto 8px 18px" }}
-              >
-                API Keys
-              </Typography>
-
       <MainButtons
         sidebarOpen={sidebarOpen}
         toggleSidebar={toggleSidebar}
@@ -47,6 +39,14 @@ export const MainKeyTable = ({ sidebarOpen, toggleSidebar, user }) => {
       />
       <Container>
         <Box sx={{ width: "100%" }}>
+
+        <Typography
+                variant="subtitle1"
+                sx={{margin: "24px auto 8px 18px" }}
+              >
+                API Keys
+              </Typography>
+
           <CustomKeysDataGrid
             rows={keys.keys}
             onSelectionModelChange={(newSelectionModel) => {
@@ -54,6 +54,9 @@ export const MainKeyTable = ({ sidebarOpen, toggleSidebar, user }) => {
             }}
             selectionModel={selectionModel}
           />
+
+
+
         </Box>
       </Container>
     </>
