@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import "./main-table.css";
 import { useQuery } from "react-query";
@@ -29,6 +29,23 @@ export const MainKeyTable = ({ sidebarOpen, toggleSidebar, user }) => {
 
   return (
     <>
+    <Container
+      maxWidth="false"
+      disableGutters={true}
+      sx={{ maxWidth: "1201px" }}
+    >
+      <Grid container sx={{ margin: "44px auto" }}>
+        <Grid item>
+            <Typography
+                  variant="subtitle1"
+                  sx={{margin: "24px auto 8px 18px" }}
+                >
+                  API Keys
+              </Typography>
+        </Grid>
+      </Grid>
+      </Container>
+
       <MainButtons
         sidebarOpen={sidebarOpen}
         toggleSidebar={toggleSidebar}
@@ -40,13 +57,6 @@ export const MainKeyTable = ({ sidebarOpen, toggleSidebar, user }) => {
       <Container>
         <Box sx={{ width: "100%" }}>
 
-        <Typography
-                variant="subtitle1"
-                sx={{margin: "24px auto 8px 18px" }}
-              >
-                API Keys
-              </Typography>
-
           <CustomKeysDataGrid
             rows={keys.keys}
             onSelectionModelChange={(newSelectionModel) => {
@@ -54,8 +64,6 @@ export const MainKeyTable = ({ sidebarOpen, toggleSidebar, user }) => {
             }}
             selectionModel={selectionModel}
           />
-
-
 
         </Box>
       </Container>
