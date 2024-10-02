@@ -154,14 +154,7 @@ export const MyFiles = () => {
                 container
                 sx={{ justifyContent: "flex-start", alignItems: "center" }}
               >
-              <Grid item>
-              <Typography
-                variant="subtitle1"
-                sx={{ textAlign: "left", margin: "24px auto 8px 18px" }}
-              >
-                API Keys
-              </Typography>
-              </Grid>
+              
               </Grid>
               <MainKeyTable
                 sidebarOpen={open}
