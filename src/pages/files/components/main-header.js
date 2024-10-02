@@ -21,7 +21,7 @@ import { MakePrivateCollectionModal } from "./make-collection-private-modal copy
 
 const SEARCH_NAME = "My Files";
 const SEARCH_DESCRIPTION =
-  "The files and collections on your files are privates and only you have access. You can create collections, made them public and/or share with others.";
+  "The files and collections on your files are private and only you have access. You can create collections, made them public and/or share with others.";
 
 export const MainHeader = ({ user }) => {
   const [searchParams] = useSearchParams();

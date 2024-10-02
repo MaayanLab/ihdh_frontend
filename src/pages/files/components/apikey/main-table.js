@@ -29,6 +29,14 @@ export const MainKeyTable = ({ sidebarOpen, toggleSidebar, user }) => {
 
   return (
     <>
+
+              <Typography
+                variant="subtitle1"
+                sx={{ textAlign: "left", margin: "24px auto 8px 18px" }}
+              >
+                API Keys
+              </Typography>
+
       <MainButtons
         sidebarOpen={sidebarOpen}
         toggleSidebar={toggleSidebar}

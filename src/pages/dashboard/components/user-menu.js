@@ -27,6 +27,7 @@ import { EditProfileForm } from "./edit-profile-form";
 import { useQuery } from "react-query";
 import { getLoggedUser } from "../../../api/user";
 import { deepOrange } from '@mui/material/colors';
+import data from "../../../data/config.json";
 
 const style = {
   position: "absolute",
@@ -129,11 +130,23 @@ export const UserMenu = ({ sidebarOpen, toggleSidebar, landingPage=false }) => {
         </Box>
         )}
         {!sidebarOpen && (
-          <Typography component="div" sx={{ marginLeft: "99px", width: "216px" }}>
+          <>
+            <Typography component="div" sx={{ marginLeft: "99px", width: "216px" }}>
+              <Link to="/">
+                <img src={logo} alt="logo" />
+              </Link>
+            </Typography>
+
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link to="/">
-              <img src={logo} alt="logo" />
+              <img
+                src={data.general.project_logo}
+                alt="logo"
+                className="navbarLogo"
+              />
             </Link>
-          </Typography>
+            </Typography>
+          </>
         )}
       </Box>
       <Link className="userLink" to="/">
