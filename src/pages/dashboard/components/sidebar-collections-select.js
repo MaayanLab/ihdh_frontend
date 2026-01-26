@@ -11,7 +11,7 @@ import {
 import { StyledFormGroup } from "../../../common/styled-form-group";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import { SidebarCollectionItem } from "./sidebar-collection-item";
+import { CollectionExplorer, SidebarCollectionItem } from "./sidebar-collection-item";
 
 export const SidebarCollectionsSelect = () => {
   const [isOpen, toggleOpen] = useReducer((state) => !state, true);
@@ -21,10 +21,17 @@ export const SidebarCollectionsSelect = () => {
     isLoading,
     error,
   } = useQuery(["collections"], () => getCollections());
-
   if (isLoading) return "Loading...";
   if (error) return "There was a problem loading this page";
-
+  const collection_dict = (collections || []).reduce((acc, i)=>({...acc, [i.id]: i}),{})
+  
+  const collection_hierarchy = []
+  for (const collection of collections) {
+    if (collection.collections.length) {
+      collection.children = collection.collections.filter(id=>id !== collection.id).map(id=>collection_dict[id] || {})
+    }
+    if (collection.id === 1) collection_hierarchy.push(collection)
+  }
   return (
     <>
       <ListItemButton onClick={toggleOpen}>
@@ -34,17 +41,7 @@ export const SidebarCollectionsSelect = () => {
         </ListItemText>
       </ListItemButton>
       <Collapse in={isOpen} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton>
-            <ListItemText>
-              <StyledFormGroup>
-                {collections.slice(1).map(({ id, name, files }) => (
-                  <SidebarCollectionItem key={id} id={id} name={name} files={files} />
-                ))}
-              </StyledFormGroup>
-            </ListItemText>
-          </ListItemButton>
-        </List>
+        <CollectionExplorer collections={(collection_hierarchy[0] || {}).children}/>
       </Collapse>
     </>
   );

@@ -1,4 +1,4 @@
-import { Grid, Box, Typography, Modal, Button } from "@mui/material";
+import { Grid, Box, Typography, Modal, Button, Avatar } from "@mui/material";
 import { useQuery } from "react-query";
 import { getCollection } from "../../../api/collection";
 import collectionIcon from "../../../image/collection-icon.svg";
@@ -85,7 +85,7 @@ export const CollectionCard = ({ id }) => {
     >
       <Box sx={{ height: "44px", width: "auto" }}>
         <img
-          src={collection.image_url ? collection.image_url : ""}
+          src={collection.image_url ? collection.image_url : "https://datacrosswayspublic.s3.amazonaws.com/collections/collection.jpg"}
           alt={`Collection logo `}
           style={{ width: "auto", height: "100%" }}
         />

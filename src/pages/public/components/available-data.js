@@ -4,6 +4,9 @@ import minBlobAv from "../../../image/blob-available-03.svg";
 import avaIcon from "../../../image/available-icon.svg";
 import avaIcon1 from "../../../image/available-icon-1.svg";
 import avaIcon2 from "../../../image/available-icon-2.svg";
+import avaIcon3 from "../../../image/upload-icon.svg";
+import Icon from '@mdi/react';
+import { mdilFileMultiple, mdilChartPie, mdilFile, mdilArrangeSendToBack, mdilBank } from '@mdi/light-js';
 import { useQuery } from "react-query";
 import { getStats } from "../../../api/public";
 import getReadableFileSizeString from "../../../common/readable-file-size";
@@ -81,7 +84,7 @@ export const AvailableData = () => {
         sx={{
           justifyContent: "center",
           background: "#EFF4F5",
-          maxWidth: "1080px",
+          // maxWidth: "1150px",
           margin: "80px auto",
           padding: "32px 57px",
           borderRadius: "8px",
@@ -89,14 +92,35 @@ export const AvailableData = () => {
       >
         <Grid
           item
-          sm={4}
+          sm={2}
           sx={{
             display: "flex",
             justifyContent: "center",
             borderRight: "1px solid #B0C9CB",
           }}
         >
-          <img src={avaIcon} alt="Icon" className="collectionIcons" />
+          {/* <img src={avaIcon2} alt="Icon" className="collectionIcons" /> */}
+          <Icon path={mdilBank} size={3} style={{color: "#42958d"}} />
+          <Box sx={{ marginLeft: "30px" }} className="statsBox">
+            <Typography variant="subtitle3" className="statsCollection">
+              36
+            </Typography>
+            <Typography variant="body2" className="statsTitle">
+              Institutions
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid
+          item
+          sm={2}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            borderRight: "1px solid #B0C9CB",
+          }}
+        >
+          {/* <img src={avaIcon} alt="Icon" className="collectionIcons" /> */}
+          <Icon path={mdilArrangeSendToBack} size={3} style={{color: "#42958d"}} />
           <Box sx={{ marginLeft: "30px" }} className="statsBox">
             <Typography variant="subtitle3" className="statsCollection">
               {stats.datasets}
@@ -108,14 +132,15 @@ export const AvailableData = () => {
         </Grid>
         <Grid
           item
-          sm={4}
+          sm={2}
           sx={{
             display: "flex",
             justifyContent: "center",
             borderRight: "1px solid #B0C9CB",
           }}
         >
-          <img src={avaIcon2} alt="Icon" className="collectionIcons" />
+          {/* <img src={avaIcon2} alt="Icon" className="collectionIcons" /> */}
+          <Icon path={mdilFile} size={3} style={{color: "#42958d"}} />
           <Box sx={{ marginLeft: "30px" }} className="statsBox">
             <Typography variant="subtitle3" className="statsCollection">
               {stats.files}
@@ -125,8 +150,31 @@ export const AvailableData = () => {
             </Typography>
           </Box>
         </Grid>
-        <Grid item sm={4} sx={{ display: "flex", justifyContent: "center" }}>
-          <img src={avaIcon1} alt="Icon" className="collectionIcons" />
+        
+        <Grid
+          item
+          sm={2}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            borderRight: "1px solid #B0C9CB",
+          }}
+        >
+          {/* <img src={avaIcon3} alt="Icon" className="collectionIcons" /> */}
+          <Icon path={mdilFileMultiple} size={3} style={{color: "#42958d"}} />
+          <Box sx={{ marginLeft: "30px" }} className="statsBox">
+            <Typography variant="subtitle3" className="statsCollection">
+              {stats.file_types}
+            </Typography>
+            <Typography variant="body2" className="statsTitle">
+              File Types
+            </Typography>
+          </Box>
+        </Grid>
+
+        <Grid item sm={2} sx={{ display: "flex", justifyContent: "center" }}>
+          {/* <img src={avaIcon1} alt="Icon" className="collectionIcons" /> */}
+          <Icon path={mdilChartPie} size={3} style={{color: "#42958d"}} />
           <Box sx={{ marginLeft: "30px" }} className="statsBox">
             <Typography variant="subtitle3" className="statsCollection">
               {getReadableFileSizeString(stats.size)}

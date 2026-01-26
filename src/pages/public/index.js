@@ -57,7 +57,7 @@ export const PublicPage = () => {
   useEffect(() => {
     const checkUserId = async () => {
       try {
-        const response = await fetch('/api/user/i');
+        const response = await fetch(process.env.REACT_APP_BASE_API_URL + '/user/i');
         const data = await response.json();
         if (data && data.id) {
           setHasUserId(true);

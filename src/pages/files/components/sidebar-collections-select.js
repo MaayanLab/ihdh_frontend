@@ -14,6 +14,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import { SidebarCollectionItem } from "./sidebar-collection-item";
 import { getUserCollections } from "../../../api/user";
 import { getCollection } from "../../../api/collection";
+import { CollectionExplorer } from "./sidebar-collection-item-2";
 
 const groupCollections = (collections, currentOwner) => {
   const groupedMap = {
@@ -65,25 +66,33 @@ export const SidebarSubMenu = ({ label, collections }) => {
       : childCollections.collections
     : [];
 
-  const menuEntries = collections.reduce((accumulator, current) => {
-    if (current.id === 1) {
-      return accumulator;
-    }
-    return [
-      ...accumulator,
-      {
-        id: current.id,
-        name: current.name,
-        children: [],
-      },
-    ];
-  }, []);
+  // const menuEntries = collections.reduce((accumulator, current) => {
+  //   if (current.id === 1) {
+  //     return accumulator;
+  //   }
+  //   return [
+  //     ...accumulator,
+  //     {
+  //       id: current.id,
+  //       name: current.name,
+  //       children: [],
+  //     },
+  //   ];
+  // }, []);
 
-  for (const entry of childCollectionsArray) {
-    const parent = menuEntries.find(
-      (collection) => collection.id === entry.parent_collection_id
-    );
-    parent?.children?.push(entry);
+  // for (const entry of childCollectionsArray) {
+  //   const parent = menuEntries.find(
+  //     (collection) => collection.id === entry.parent_collection_id
+  //   );
+  //   parent?.children?.push(entry);
+  // }
+  const collection_dict = (collections || []).reduce((acc, i)=>({...acc, [i.id]: i}),{})
+  const collection_hierarchy = []
+  for (const collection of collections) {
+    if (collection.collections.length) {
+      collection.children = collection.collections.filter(id=>id !== collection.id).map(id=>collection_dict[id] || {})
+    }
+    if (collection_dict[collection.parent_collection_id] === undefined) collection_hierarchy.push(collection)
   }
   return (
     <Box sx={{ margin: "20px 0", background: "#FAFAFA", borderRadius: "8px" }}>
@@ -94,41 +103,7 @@ export const SidebarSubMenu = ({ label, collections }) => {
         </ListItemText>
       </ListItemButton>
       <Collapse in={isOpen} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton
-            sx={{
-              "&:hover": {
-                background: "#FAFAFA",
-              },
-            }}
-          >
-            <ListItemText>
-              <StyledFormGroup>
-                {menuEntries.map(({ id, name, children }) => (
-                  <Box key={id}>
-                    <SidebarCollectionItem
-                      id={id}
-                      name={name}
-                      sx={{ margin: "15px auto", width: "100%" }}
-                    ></SidebarCollectionItem>
-                    {children && (
-                      <Box sx={{ marginLeft: "25px", width: "93%" }}>
-                        {children.map(({ name, id }) => (
-                          <SidebarCollectionItem
-                            key={id}
-                            name={name}
-                            id={id}
-                            sx={{ marginLeft: "10px" }}
-                          ></SidebarCollectionItem>
-                        ))}
-                      </Box>
-                    )}
-                  </Box>
-                ))}
-              </StyledFormGroup>
-            </ListItemText>
-          </ListItemButton>
-        </List>
+        <CollectionExplorer collections={collection_hierarchy}/>
       </Collapse>
     </Box>
   );
