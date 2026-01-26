@@ -46,7 +46,7 @@ export const CollectionCard = ({ id }) => {
     return (
       <Box
         sx={{
-          height: "332px",
+          height: "400px",
           width: "70%",
           maxWidth: "350px",
           minWidth: "300px",
@@ -73,7 +73,7 @@ export const CollectionCard = ({ id }) => {
       sx={{
         width: "70%",
         maxWidth: "350px",
-        height: "332px",
+        height: "400px",
         margin: "10px",
         backgroundColor: "#FAFAFA",
         padding: "48px 24px",

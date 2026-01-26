@@ -100,12 +100,12 @@ export const DataCollections = () => {
               height: "14px",
             },
           }}
-          activeIndicatorIconButtonProps={{
-            style: {
-              backgroundColor: "#B0C9CB",
-              color: "#B0C9CB",
-            },
-          }}
+          // activeIndicatorIconButtonProps={{
+          //   style: {
+          //     backgroundColor: "#B0C9CB",
+          //     color: "#B0C9CB",
+          //   },
+          // }}
         >
           {slides}
         </Carousel>
