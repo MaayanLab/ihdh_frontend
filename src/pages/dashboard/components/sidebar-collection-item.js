@@ -77,17 +77,13 @@ export const SidebarCollectionItem = (collection) => {
         {collection.files.length ? <Link href={`/collection/${collection.id}`}>
           <Typography sx={{
                   maxWidth: "120px",
-                  whitespace: "nowrap",
-                  textOverflow: "ellipsis",
-                  overflow: "hidden",
-                }} variant="body1">{collection.name}</Typography>
+                  textWrap: "balance",
+                }} variant="body1">{collection.name.replace(/_/g, " ")}</Typography>
         </Link>:
         <Typography sx={{
                   maxWidth: "120px",
-                  whitespace: "nowrap",
-                  textOverflow: "ellipsis",
-                  overflow: "hidden",
-                }} variant="body1">{collection.name}</Typography>
+                  textWrap: "balance",
+                }} variant="body1">{collection.name.replace(/_/g, " ")}</Typography>
         }
         {collection.files.length ? <Typography variant="countFilter">{collection.files.length}</Typography>: null}
         
