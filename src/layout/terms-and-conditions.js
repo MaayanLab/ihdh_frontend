@@ -64,64 +64,60 @@ export const TermsConditionsModal = ({ isOpen, onClose }) => {
         </Typography>
         <Typography variant="body4" sx={{ margin: "25px 20px" }}>
           You will request controlled-access datasets solely in connection with
-          an IRB approved research project
+          an IRB approved research project.
         </Typography>
         <Typography variant="body4" sx={{ margin: "25px 20px" }}>
           You will make no attempt to identify or contact individual
           participants or groups from whom data was collected, or generate
           information that could allow participants’ identities to be readily
-          ascertained{" "}
+          ascertained.{" "}
         </Typography>
         <Typography variant="body4" sx={{ margin: "25px 20px" }}>
           You will not distribute controlled-access datasets to any entity or
-          individual beyond those specified in an approved Data Access Request
+          individual beyond those specified in an approved Data Access Request.
         </Typography>
         <Typography variant="body4" sx={{ margin: "25px 20px" }}>
           You will adhere to computer security practices in compliance with NIH
           Security Best Practices for Controlled-Access Data such that only
-          authorized individuals possess access to data files
+          authorized individuals possess access to data files.
         </Typography>
         <Typography variant="body4" sx={{ margin: "25px 20px" }}>
           You acknowledge Intellectual Property Policies should they exist as
-          specified in a dataset’s associated Data Use Certification
+          specified in a dataset’s associated Data Use Certification.
         </Typography>
         <Typography variant="body4" sx={{ margin: "25px 20px" }}>
           You will report any inadvertent data release in accordance with the
           terms of the Data Use Certification, breach of data security, or other
-          data management incidents contrary to the terms of data access
+          data management incidents contrary to the terms of data access.
         </Typography>
         <Typography variant="body4" sx={{ margin: "25px 20px" }}>
           These terms and conditions may be changed at any time via a public
-          posting of revisions to LymeCommons
+          posting of revisions to IHDH.
         </Typography>
         <Typography variant="body4" sx={{ margin: "25px 20px" }}>
           {" "}
           As a user, you agree to review the Terms & Conditions each time you
-          use LymeCommons so that you are aware of any modifications made to
-          these policies
+          use IHDH so that you are aware of any modifications made to
+          these policies.
         </Typography>
         <Typography variant="body4" sx={{ margin: "25px 20px" }}>
-          By accessing or using LymeCommons, you agree with all terms and
-          conditions and policies
+          By accessing or using IHDH, you agree with all terms and
+          conditions and policies.
         </Typography>
         <Typography variant="body4" sx={{ margin: "25px 20px" }}>
-          For data available from LymeCommons, the developers and administrators
-          of LymeCommons do not warrant or assume any legal liability or
+          For data available from IHDH, the developers and administrators
+          of IHDH do not warrant or assume any legal liability or
           responsibility for the accuracy, completeness, or usefulness of any
-          information, apparatus, product, or process
+          information, apparatus, product, or process.
         </Typography>
         <Typography variant="body4" sx={{ margin: "25px 20px" }}>
           {" "}
-          No specific medical advice is provided by LymeCommons
+          No specific medical advice is provided by IHDH.
         </Typography>
         <Typography variant="body4" sx={{ margin: "25px 20px" }}>
           {" "}
           Please consult with a qualified physician for diagnosis and for
-          answers to personal questions
-        </Typography>
-        <Typography variant="body4" sx={{ margin: "25px 20px 5px 20px" }}>
-          Please consult with a qualified physician for diagnosis and for
-          answers to personal questions
+          answers to personal questions.
         </Typography>
         <Typography variant="body4" sx={{ margin: "0px 20px" }}>
           {" "}
