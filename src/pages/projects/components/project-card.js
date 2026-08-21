@@ -75,9 +75,13 @@ export const ProjectCard = ({ project }) => {
         {title}
       </Typography>
 
-      <Typography variant="body3" sx={{ flexGrow: 1, marginBottom: "20px" }}>
-        {description}
-      </Typography>
+      {description ? (
+        <Typography variant="body3" sx={{ flexGrow: 1, marginBottom: "20px" }}>
+          {description}
+        </Typography>
+      ) : (
+        <Box sx={{ flexGrow: 1, marginBottom: "20px" }} />
+      )}
 
       <Box
         sx={{

@@ -153,7 +153,7 @@ export const ProjectsPage = () => {
             variant="body1"
             sx={{ maxWidth: "700px", margin: "0 auto 32px auto", textAlign: "center" }}
           >
-            Explore the funded research projects behind our data collections,
+            Explore research projects funded by the Cohen Foundation,
             including their focus areas and affiliated institutions.
           </Typography>
 
