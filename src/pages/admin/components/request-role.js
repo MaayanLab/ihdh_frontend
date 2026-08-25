@@ -85,7 +85,7 @@ export const RequestRole = ({ open, onClose }) => {
             navigator.clipboard.writeText(data.request_data.contact.email)
           }
         >
-          Copy email addres
+          Copy email address
         </Button>
       </DialogActions>
     </Dialog>

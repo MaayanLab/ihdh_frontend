@@ -57,7 +57,7 @@
   "startpage": {
     "title": "Innovative Health Data Hub",
     "subtitle": "Innovative Health Data Hub (IHDH) provides a unified resource to deposit, archive, and share data collected by researchers funded by the Steven & Alexandra Cohen Foundation.",
-    "about": "Explore Available Research Related Datasets and Connect with other Researchers",
+    "about": "Explore Available Research Related Datasets and Connect with Other Researchers",
     "news": {
       "name": "IHDH",
       "username": "LymeMind",
@@ -73,28 +73,12 @@
         "bio": "Ben manages the foundation’s various health portfolios including the Cohen Psychedelic Research & Health Initiative and the Cohen Lyme & Tickborne Disease Initiative.  Dr. Nemser has a PhD in Public Health with extensive experience in global health systems in developing countries and related research.  Prior to joining the Foundation, Ben was a Senior Monitoring and Evaluation (M&E) Consultant for UNICEF and the World Health Organization (WHO).  After receiving a Master of Public Health from Columbia University, Ben worked for Columbia University as an Epidemiologist and Data Systems Manager.  In addition to his public health experience, Ben has a Master’s in Business Administration and a background in governmental finance and budgeting."
       },
       {
-        "firstname": "Alexander",
-        "lastname": "Lachmann",
-        "url_photo": "https://labs.icahn.mssm.edu/maayanlab/wp-content/uploads/sites/75/2020/06/lachmann_a.png",
-        "email": "alexander.lachmann@mssm.edu",
-        "role": "Data Scientist",
-        "bio": "Dr. Lachmann is a Research Assistant Professor in the Ma’ayan Laboratory of Computational Systems Biology and a member of the leadership team in the Mount Sinai Center for Bioinformatics at the Icahn School of Medicine at Mount Sinai. Dr. Lachmann earned his PhD in Biomedical Informatics from Columbia University and a Master’s degree in Computer Science from University of Aachen. Dr. Lachmann’s expertise is in the areas of systems biology and bioinformatics."
-      },
-      {
         "firstname": "Avi",
         "lastname": "Ma'ayan",
         "url_photo": "https://labs.icahn.mssm.edu/maayanlab/wp-content/uploads/sites/75/2014/10/a_maayan_wide.png",
-        "email": "avi.maayan@mssm.edu",
+        "email": "",
         "role": "Principal Investigator",
         "bio": "Dr. Ma’ayan is a Mount Sinai Endowed Professor in Bioinformatics, Director of the Mount Sinai Center for Bioinformatics, Professor in the Department of Pharmacological Sciences, Professor in the Department of Artificial Intelligence and Human Health, and faculty member of the Icahn Genomics Institute. Dr. Ma'ayan is also a Principal Investigator of the NIH Common Fund Data Resource Center (DRC) for the Common Fund Data Ecosystem (CFDE), a NCI-funded ITCR resource center, a NIDDK-funded diabetes hypothesis platform, and the NCI-funded Mount Sinai Proteogenomic Data Analysis Center. The Ma'ayan Laboratory applies computational methods to study the inner workings of regulatory networks in mammalian cells. His research team applies machine learning and other statistical mining techniques to study how intracellular regulatory systems function as networks to control cellular processes such as differentiation, dedifferentiation, apoptosis and proliferation. The Ma'ayan Laboratory develops bioinformatics software applications to enable experimental biologists to form novel hypotheses from high-throughput omics datasets, while aiming to better understand the structure and function of regulatory networks in mammalian cellular and multi-cellular complex systems."
-      },
-      {
-        "firstname": "Heesu",
-        "lastname": "Kim",
-        "url_photo": "https://labs.icahn.mssm.edu/maayanlab/wp-content/uploads/sites/75/2022/11/c_kim.png",
-        "email": "heesu.kim@mssm.edu",
-        "role": "Systems Analyst",
-        "bio": "Ms. Kim is a Systems Analyst in the Ma’ayan Laboratory of Computational Systems Biology and Mount Sinai Center for Bioinformatics at the Icahn School of Medicine at Mount Sinai. Ms. Kim earned a Bachelor of Science in Computer Science and Information Engineering at Inha University (South Korea), and her MS in Business Analytics and MBA at Hult International Business School."
       }
     ],
     "collections_highlight": {
@@ -125,8 +109,8 @@
   "request_data": {
     "instructions": "To request data access, please contact the admin by email. We will then work with you to provide all the required permissions, if appropriate. Remember to declare which collections you would like to access.",
     "contact": {
-      "name": "Alexander Lachmann",
-      "email": "alexander.lachmann@mssm.edu"
+      "name": "Avi Ma'ayan",
+      "email": "support@ihdh.io"
     }
   },
   "my_files_page": {
