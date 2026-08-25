@@ -1,9 +1,5 @@
 import { Box } from "@mui/material";
-
-const GRADIENTS = [
-  "linear-gradient(90deg, #0F7F90 -8.75%, #00B08A 113.12%)",
-  "linear-gradient(97.08deg, #F38B97 20.01%, #F4904D 75.82%)",
-];
+import { gradientForCategory } from "../category-colors";
 
 const STOPWORDS = new Set([
   "of",
@@ -28,15 +24,7 @@ const initialsFor = (affiliation) => {
     .join("");
 };
 
-const gradientFor = (affiliation) => {
-  let hash = 0;
-  for (let i = 0; i < (affiliation || "").length; i++) {
-    hash = (hash * 31 + affiliation.charCodeAt(i)) % GRADIENTS.length;
-  }
-  return GRADIENTS[hash];
-};
-
-export const AffiliationBadge = ({ affiliation }) => {
+export const AffiliationBadge = ({ affiliation, category }) => {
   return (
     <Box
       sx={{
@@ -44,7 +32,7 @@ export const AffiliationBadge = ({ affiliation }) => {
         height: "40px",
         minWidth: "40px",
         borderRadius: "50%",
-        background: gradientFor(affiliation),
+        background: gradientForCategory(category),
         color: "#fff",
         display: "flex",
         alignItems: "center",

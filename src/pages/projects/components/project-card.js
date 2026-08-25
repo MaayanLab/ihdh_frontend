@@ -1,12 +1,8 @@
-import { Box, Typography, Chip } from "@mui/material";
+import { Box, Typography, Chip, Tooltip } from "@mui/material";
 import { styled } from "@mui/system";
 import { Link as RouterLink } from "react-router-dom";
 import { AffiliationBadge } from "./affiliation-badge";
-
-const CATEGORY_STYLE = {
-  lyme: "linear-gradient(90deg, #0F7F90 -8.75%, #00B08A 113.12%)",
-  psych: "linear-gradient(97.08deg, #F38B97 20.01%, #F4904D 75.82%)",
-};
+import { gradientForCategory } from "../category-colors";
 
 const TagChip = styled(Chip)({
   background: "#EFF4F5",
@@ -29,7 +25,16 @@ const cardLinkStyle = {
   width: "fit-content",
 };
 
-export const ProjectCard = ({ project }) => {
+const disabledCardLinkStyle = {
+  color: "rgba(0, 53, 65, 0.38)",
+  fontWeight: 500,
+  fontSize: "13px",
+  lineHeight: "16px",
+  width: "fit-content",
+  cursor: "not-allowed",
+};
+
+export const ProjectCard = ({ project, isLoggedIn }) => {
   const {
     title,
     description,
@@ -38,7 +43,7 @@ export const ProjectCard = ({ project }) => {
     category,
     category_label,
     contact_name,
-    contact_email,
+    has_collection,
     collection_id,
     collection_name,
   } = project;
@@ -56,7 +61,7 @@ export const ProjectCard = ({ project }) => {
     >
       <Typography
         sx={{
-          background: CATEGORY_STYLE[category] || CATEGORY_STYLE.lyme,
+          background: gradientForCategory(category),
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           backgroundClip: "text",
@@ -103,7 +108,7 @@ export const ProjectCard = ({ project }) => {
           borderTop: "1px solid #E4EBEC",
         }}
       >
-        <AffiliationBadge affiliation={affiliation} />
+        <AffiliationBadge affiliation={affiliation} category={category} />
         <Box sx={{ marginLeft: "12px" }}>
           <Typography variant="body3">{affiliation}</Typography>
           {contact_name && (
@@ -117,34 +122,27 @@ export const ProjectCard = ({ project }) => {
         </Box>
       </Box>
 
-      {(contact_email || collection_id) && (
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "16px",
-            marginTop: "12px",
-          }}
-        >
-          {contact_email && (
-            <a
-              href={`mailto:${contact_email}`}
-              style={cardLinkStyle}
-              title={`Email ${contact_name || "the lead investigator"}`}
-            >
-              Contact {contact_name || "lead investigator"}
-            </a>
-          )}
-          {collection_id && (
-            <RouterLink
-              to={`/collection/${collection_id}`}
-              style={cardLinkStyle}
-              title={collection_name || "View file collection"}
-            >
-              View file collection
-            </RouterLink>
-          )}
+      {collection_id ? (
+        <Box sx={{ marginTop: "12px" }}>
+          <RouterLink
+            to={`/collection/${collection_id}`}
+            style={cardLinkStyle}
+            title={collection_name || "View file collection"}
+          >
+            View file collection
+          </RouterLink>
         </Box>
+      ) : (
+        has_collection &&
+        !isLoggedIn && (
+          <Box sx={{ marginTop: "12px" }}>
+            <Tooltip title="Please log in to view associated data">
+              <Box component="span" sx={disabledCardLinkStyle}>
+                View file collection
+              </Box>
+            </Tooltip>
+          </Box>
+        )
       )}
     </Box>
   );

@@ -1,13 +1,13 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { Box, Typography, Button, Chip, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import MuiAppBar from "@mui/material/AppBar";
 import { Helmet } from "react-helmet-async";
 import { useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
 import { getLoggedUser } from "../../api/user";
 import { getProjects } from "../../api/projects";
 import { UserMenu } from "../dashboard/components/user-menu";
+import { NavBar } from "../../layout/navbar";
 import { FooterSection } from "../../layout/compactfooter";
 import { ProjectCard } from "./components/project-card";
 import data from "../../data/config.json";
@@ -57,35 +57,36 @@ const FilterButton = styled(Button, {
   },
 }));
 
-const CATEGORIES = [
-  { key: "lyme", label: "Lyme Disease" },
-  { key: "psych", label: "Psychedelic Research" },
-];
-
 export const ProjectsPage = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate("/logout");
-    }, 60 * 1000 * 10);
-    return () => clearTimeout(timer);
-  }, [navigate]);
-
-  const {
-    data: user,
-    isLoading: userLoading,
-    error: userError,
-  } = useQuery(["user/getLoggedUser"], () => getLoggedUser());
+  // Public page: anyone can view it. We still check for a logged-in user so
+  // the nav bar matches the rest of the app, but a failed/absent check just
+  // means "show the logged-out nav" rather than blocking the page.
+  const { data: user } = useQuery(["user/getLoggedUser"], () => getLoggedUser(), {
+    retry: false,
+  });
 
   const {
     data: projects,
     isLoading: projectsLoading,
     error: projectsError,
-  } = useQuery(["projects"], () => getProjects(), { enabled: !!user });
+  } = useQuery(["projects"], () => getProjects());
 
   const [category, setCategory] = useState(null);
+  const [dataStatus, setDataStatus] = useState(null);
   const [keywords, setKeywords] = useState([]);
+
+  // Category filter options come entirely from whatever categories are
+  // present in the loaded projects - adding a new category to the backend
+  // registry (project_categories.py) surfaces it here with no frontend change.
+  const availableCategories = useMemo(() => {
+    const seen = new Map();
+    (projects || []).forEach((project) => {
+      if (!seen.has(project.category)) {
+        seen.set(project.category, project.category_label);
+      }
+    });
+    return Array.from(seen, ([key, label]) => ({ key, label }));
+  }, [projects]);
 
   const availableKeywords = useMemo(() => {
     const scoped = (projects || []).filter(
@@ -98,12 +99,17 @@ export const ProjectsPage = () => {
 
   const resetFilters = () => {
     setCategory(null);
+    setDataStatus(null);
     setKeywords([]);
   };
 
   const toggleCategory = (key) => {
     setCategory((current) => (current === key ? null : key));
     setKeywords([]);
+  };
+
+  const toggleDataStatus = (status) => {
+    setDataStatus((current) => (current === status ? null : status));
   };
 
   const toggleKeyword = (keyword) => {
@@ -114,20 +120,16 @@ export const ProjectsPage = () => {
     );
   };
 
-  if (userLoading) return "Loading...";
-  if (userError) {
-    setTimeout(() => navigate("/logout"), 0);
-    return "There was a problem loading this page";
-  }
-
   const filteredProjects = (projects || []).filter(
     (project) =>
       (!category || project.category === category) &&
+      (!dataStatus ||
+        (dataStatus === "uploaded" ? project.has_collection : !project.has_collection)) &&
       (keywords.length === 0 ||
         project.tags.some((tag) => keywords.includes(tag)))
   );
 
-  const noFiltersActive = !category && keywords.length === 0;
+  const noFiltersActive = !category && !dataStatus && keywords.length === 0;
 
   return (
     <>
@@ -139,12 +141,16 @@ export const ProjectsPage = () => {
           content="Browse research projects funded by the Cohen Lyme & Tickborne Disease Initiative and psychedelic research programs."
         />
       </Helmet>
-      <Box sx={{ display: "flex" }}>
-        <AppBar position="fixed">
-          <UserMenu landingPage />
-        </AppBar>
-      </Box>
-      <Box sx={{ paddingTop: "93px", maxWidth: "1200px", margin: "0 auto" }}>
+      {user ? (
+        <Box sx={{ display: "flex" }}>
+          <AppBar position="fixed">
+            <UserMenu landingPage />
+          </AppBar>
+        </Box>
+      ) : (
+        <NavBar />
+      )}
+      <Box sx={{ paddingTop: user ? "93px" : 0, maxWidth: "1200px", margin: "0 auto" }}>
         <Box sx={{ padding: "60px 24px 20px 24px" }}>
           <Typography variant="subtitle1" sx={{ fontSize: "40px" }}>
             Research Projects
@@ -163,8 +169,23 @@ export const ProjectsPage = () => {
             </FilterButton>
           </Box>
 
-          <Box sx={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
-            {CATEGORIES.map(({ key, label }) => (
+          <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center", marginBottom: "20px" }}>
+            <FilterButton
+              selected={dataStatus === "uploaded"}
+              onClick={() => toggleDataStatus("uploaded")}
+            >
+              Data Uploaded
+            </FilterButton>
+            <FilterButton
+              selected={dataStatus === "pending"}
+              onClick={() => toggleDataStatus("pending")}
+            >
+              Data Pending
+            </FilterButton>
+          </Box>
+
+          <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center", marginBottom: "20px" }}>
+            {availableCategories.map(({ key, label }) => (
               <FilterButton
                 key={key}
                 selected={category === key}
@@ -218,7 +239,7 @@ export const ProjectsPage = () => {
             <Grid container spacing={3}>
               {filteredProjects.map((project) => (
                 <Grid item xs={12} sm={6} lg={4} key={project.id}>
-                  <ProjectCard project={project} />
+                  <ProjectCard project={project} isLoggedIn={!!user} />
                 </Grid>
               ))}
             </Grid>
