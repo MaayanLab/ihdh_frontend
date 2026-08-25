@@ -19,6 +19,7 @@ import deleteIcon from "../../../image/delete-red-icon.svg";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { getCollections } from "../../../api/collection";
+import { getProjects } from "../../../api/projects";
 
 const CustomDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialog-paper": {
@@ -48,6 +49,8 @@ export const CreateAdminCollectionForm = ({
   allFiles,
   selectedParentToAdd,
   setSelectedParentToAdd,
+  selectedProjectToLink,
+  setSelectedProjectToLink,
   selectionModel
 }) => {
   const [selectedFileToAdd, setSelectedFileToAdd] = useState(null);
@@ -80,6 +83,14 @@ export const CreateAdminCollectionForm = ({
   const { data: allCollections = [] } = useQuery(["allCollections"], () =>
     getCollections()
   );
+
+  const { data: allProjects = [] } = useQuery(["projects"], () =>
+    getProjects()
+  );
+  const projectOptions = allProjects.map((project) => ({
+    value: project.project_id,
+    label: `${project.title} (${project.project_id})`,
+  }));
 
   const parentOptions =
     allCollections.map((entry) => ({
@@ -196,26 +207,6 @@ export const CreateAdminCollectionForm = ({
             alignItems="center"
             margin="24px 0"
           >
-            <DialogContentText
-              id="alert-dialog-description"
-              variant="modalTitle"
-              sx={{ color: "#0F7F90" }}
-            >
-              Institution Logo
-            </DialogContentText>
-            <TextField
-              margin="dense"
-              id="image_url"
-              name="image_url"
-              type="text"
-            />
-          </Grid>
-          <Grid
-            container
-            justifyContent="space-between"
-            alignItems="center"
-            margin="24px 0"
-          >
             <Typography variant="modalTitle" sx={{ color: "#0F7F90" }}>
               Make this Collection Public:{" "}
             </Typography>
@@ -266,6 +257,25 @@ export const CreateAdminCollectionForm = ({
                 />
               )}
             ></Autocomplete>
+          </Grid>
+          <Grid
+            container
+            justifyContent="space-between"
+            alignItems="center"
+            margin="24px 0"
+          >
+            <Typography variant="modalTitle" sx={{ color: "#0F7F90" }}>
+              Linked Project:{" "}
+            </Typography>
+            <Autocomplete
+              options={projectOptions}
+              value={selectedProjectToLink}
+              onChange={(_e, selectedOption) =>
+                setSelectedProjectToLink(selectedOption)
+              }
+              sx={{ width: "204px", height: "45px" }}
+              renderInput={(params) => <TextField {...params} />}
+            />
           </Grid>
           <Grid
             container

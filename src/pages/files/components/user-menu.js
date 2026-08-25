@@ -146,6 +146,14 @@ export const UserMenu = ({ sidebarOpen, toggleSidebar }) => {
       >
         Search
       </Link>
+      <Link
+        to="/projects"
+        className={
+          splitLocation[1] === "projects" ? "userLinkActive" : "userLink"
+        }
+      >
+        Projects
+      </Link>
 
       {(roles.includes("uploader") || roles.includes("admin")) && (
         <Link
