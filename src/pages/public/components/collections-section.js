@@ -26,7 +26,7 @@ const Container = styled("div")(({ theme }) => ({
 
 export const DataCollections = () => {
   const smallScreens = useMediaQuery("(max-width: 1024px)");
-  const { ids_list, title } = data.startpage.collections_highlight;
+  const { title } = data.startpage.collections_highlight;
 
   // Auto-populated: any collection with visibility turned on shows up here
   // the moment it's uploaded, newest first - no manual list to maintain.
