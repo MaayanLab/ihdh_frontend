@@ -82,7 +82,8 @@
       }
     ],
     "collections_highlight": {
-      "title": "Innovative Health Data Hub (IHDH) supports the inclusion of diverse data types including genomics, transcriptomics, and other omics as well as phenotypic data collected from patients, model organisms, and pathogens."
+      "title": "Innovative Health Data Hub (IHDH) supports the inclusion of diverse data types including genomics, transcriptomics, and other omics as well as phenotypic data collected from patients, model organisms, and pathogens.",
+      "ids_list": [5, 6]
     },
     "general_contact": {
       "adress": "One Gustave L. Levi Place, Box 1603, New York, NY 10029, USA",
