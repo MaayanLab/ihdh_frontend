@@ -92,7 +92,26 @@ export const SidebarSubMenu = ({ label, collections }) => {
     if (collection.collections.length) {
       collection.children = collection.collections.filter(id=>id !== collection.id).map(id=>collection_dict[id] || {})
     }
+    // Root (self-referential parent_collection_id) is never shown as a
+    // node itself - skip it here; its children are promoted to the top
+    // level below instead.
+    if (collection.id === collection.parent_collection_id) continue;
     if (collection_dict[collection.parent_collection_id] === undefined) collection_hierarchy.push(collection)
+  }
+  // If root is present in this bucket, its children belong at the top
+  // level - otherwise they'd only be reachable by expanding a "root" node
+  // that's never rendered, which is how they silently disappeared.
+  const rootCollection = (collections || []).find(c => c.id === c.parent_collection_id);
+  if (rootCollection?.children) {
+    collection_hierarchy.push(
+      // Root's children can span accessibility buckets other than this
+      // one - collection_dict[id] falls back to {} for anything not in
+      // *this* bucket, so filter those placeholders out along with root's
+      // self-reference, or they'd render as blank rows.
+      ...rootCollection.children.filter(
+        (c) => c.id !== undefined && c.id !== rootCollection.id
+      )
+    );
   }
   return (
     <Box sx={{ margin: "20px 0", background: "#FAFAFA", borderRadius: "8px" }}>
