@@ -16,7 +16,6 @@ export const MainFilesHeader = ({ user }) => {
   const [searchParams] = useSearchParams();
   const collectionId = searchParams.get("collectionId");
   const isCollection = !!collectionId;
-
   const {
     data: collection,
     isLoading,

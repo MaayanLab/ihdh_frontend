@@ -56,6 +56,22 @@ export const MainHeader = () => {
       <Typography variant="body4" sx={{ margin: "0px auto" }}>
         {isCollection ? collection.description : SEARCH_DESCRIPTION}
       </Typography>
+      {isCollection && collection.child_collections?.length > 0 && (
+        <Typography variant="body4" sx={{ margin: "12px auto" }}>
+          Subcollections:{" "}
+          {collection.child_collections.map((sub, i) => (
+            <span key={sub.id}>
+              <Link
+                to={`/collection/${sub.id}`}
+                style={{ color: "#F4904D", textDecoration: "none" }}
+              >
+                {sub.name}
+              </Link>
+              {i < collection.child_collections.length - 1 ? ", " : ""}
+            </span>
+          ))}
+        </Typography>
+      )}
     </Container>
   );
 };

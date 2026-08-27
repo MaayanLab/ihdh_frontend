@@ -18,6 +18,7 @@ import { DeleteFilesModal } from "./delete-files-modal";
 import { DeleteCollectionsModal } from "./delete-collections-modal";
 import { DeleteFilesAndCollectionsModal } from "./delete-file-and-collection-modal";
 import { searchFiles } from "../../../api/file";
+import { getProjects } from "../../../api/projects";
 
 const styleEdit = {
   position: "absolute",
@@ -71,6 +72,29 @@ export const EditCollectionModal = ({
       }
     : null;
   const [selectedParentToAdd, setSelectedParentToAdd] = useState(parentOption);
+
+  const { data: allProjects = [] } = useQuery(["projects"], () =>
+    getProjects()
+  );
+  const [selectedProjectToLink, setSelectedProjectToLink] = useState(null);
+  useEffect(() => {
+    if (collection?.project_id) {
+      const match = allProjects.find(
+        (project) => project.project_id === collection.project_id
+      );
+      setSelectedProjectToLink({
+        value: collection.project_id,
+        label: match
+          ? `${match.title} (${match.project_id})`
+          : collection.project_id,
+      });
+    } else {
+      // Reset explicitly - without this, switching from editing a collection
+      // that has a linked project to one that doesn't would leave the
+      // previous collection's selection showing (and savable) here too.
+      setSelectedProjectToLink(null);
+    }
+  }, [collection?.project_id, allProjects]);
 
   const removeFileFromCollection = (id) => {
     if (filesToAdd.find((entry) => entry.id === id)) {
@@ -166,6 +190,9 @@ export const EditCollectionModal = ({
     }
     payload.parent_collection_id = selectedParentToAdd
       ? selectedParentToAdd.value
+      : null;
+    payload.project_id = selectedProjectToLink
+      ? selectedProjectToLink.value
       : null;
     payload.visibility = payload.visibility === "on" ? "visible" : "hidden";
     payload.accessibility = payload.accessibility === "on" ? "open" : "locked";
@@ -347,6 +374,8 @@ export const EditCollectionModal = ({
             user={user}
             selectedParentToAdd={selectedParentToAdd}
             setSelectedParentToAdd={setSelectedParentToAdd}
+            selectedProjectToLink={selectedProjectToLink}
+            setSelectedProjectToLink={setSelectedProjectToLink}
           />
           <Box
             sx={{

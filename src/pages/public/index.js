@@ -10,6 +10,7 @@ import { Jumbotron } from "./components/jumbotron";
 import { NewsSection } from "./components/news-section";
 import data from "../../data/config.json";
 import { UserMenu } from "../dashboard/components/user-menu";
+import { getLoggedUser } from "../../api/user";
 import React, { useState, useEffect } from 'react';
 import MuiAppBar from "@mui/material/AppBar";
 import { styled } from "@mui/material/styles";
@@ -57,16 +58,15 @@ export const PublicPage = () => {
   useEffect(() => {
     const checkUserId = async () => {
       try {
-        const response = await fetch('/api/user/i');
-        const data = await response.json();
-        if (data && data.id) {
+        const loggedUser = await getLoggedUser();
+        if (loggedUser && loggedUser.id) {
           setHasUserId(true);
         }
       } catch (error) {
         console.log('Error fetching user data:', error);
       }
     };
-    
+
     checkUserId();
   }, []);
 

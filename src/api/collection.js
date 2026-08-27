@@ -10,6 +10,11 @@ export const getCollection = async (id) => {
   return response;
 };
 
+export const getVisibleCollections = async () => {
+  const { collections } = await fetchPublic("/collection/visible");
+  return collections;
+};
+
 export const getCollectionFiles = async (id, offset = 0, limit = 1000) => {
   const response = await fetchPublic(
     "/collection/" + id + "/files?offset=" + offset + "&limit=" + limit

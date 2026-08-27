@@ -34,6 +34,7 @@ export const MainButtons = ({
     label: "root",
     value: 1,
   });
+  const [selectedProjectToLink, setSelectedProjectToLink] = useState(null);
   const handleClickOpenDialog = () => {
     setOpenDialog(true);
   };
@@ -41,6 +42,7 @@ export const MainButtons = ({
     setOpenDialog(false);
     setFilesToAdd([]);
     setCollectionsToAdd([]);
+    setSelectedProjectToLink(null);
   };
   const [isEditModalOpen, toggleEditModal] = useReducer(
     (state) => !state,
@@ -52,6 +54,7 @@ export const MainButtons = ({
       queryClient.invalidateQueries(["collections"]);
       queryClient.invalidateQueries(["userCollections"]);
       setSelectedParentToAdd(null);
+      setSelectedProjectToLink(null);
       setFilesToAdd([]);
       setCollectionsToAdd([]);
       setOpenDialog(false);
@@ -168,6 +171,9 @@ export const MainButtons = ({
         : null;
       payload.accessibility =
         payload.accessibility === "on" ? "open" : "locked";
+      payload.project_id = selectedProjectToLink
+        ? selectedProjectToLink.value
+        : null;
       await mutateAsync(payload);
     } catch (e) {
       console.error(e);
@@ -308,6 +314,8 @@ export const MainButtons = ({
         allFiles={allFiles?.files}
         selectedParentToAdd={selectedParentToAdd}
         setSelectedParentToAdd={setSelectedParentToAdd}
+        selectedProjectToLink={selectedProjectToLink}
+        setSelectedProjectToLink={setSelectedProjectToLink}
       />
       {selectionModel[0] !== undefined && (
         <EditAdminCollectionModal

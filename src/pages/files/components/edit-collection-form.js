@@ -16,6 +16,7 @@ import saveIcon from "../../../image/save-icon.svg";
 import { useQuery } from "react-query";
 import { searchFiles } from "../../../api/file";
 import { getUserCollections } from "../../../api/user";
+import { getProjects } from "../../../api/projects";
 import "./edit-collection-form.css";
 import { ConfirmDeleteCollectionModal } from "./confirm-delete-collection-modal";
 
@@ -34,6 +35,8 @@ export const EditCollectionForm = ({
   collectionsToAdd,
   selectedParentToAdd,
   setSelectedParentToAdd,
+  selectedProjectToLink,
+  setSelectedProjectToLink,
   onClose,
 }) => {
   // TODO: grab the other user files from the API
@@ -70,6 +73,14 @@ export const EditCollectionForm = ({
   const { data: allUserCollections = [] } = useQuery(["userCollections"], () =>
     getUserCollections()
   );
+
+  const { data: allProjects = [] } = useQuery(["projects"], () =>
+    getProjects()
+  );
+  const projectOptions = allProjects.map((project) => ({
+    value: project.project_id,
+    label: `${project.title} (${project.project_id})`,
+  }));
 
   const filteredFiles =
     collectionFiles?.filter(({ id }) => !filesToRemove.includes(id)) ?? [];
@@ -217,29 +228,6 @@ export const EditCollectionForm = ({
       </Grid>
       <Grid container justifyContent="space-between" margin="24px 0">
         <Typography variant="modalTitle" sx={{ color: "#0F7F90" }}>
-          Institution Logo:{" "}
-        </Typography>
-        {isEdit ? (
-          <OutlinedInput
-            name="image_url"
-            defaultValue={collection.image_url ? collection.image_url : ""}
-            sx={{ width: "204px", height: "40px", maxWidth: "60%" }}
-          />
-        ) : (
-          <Typography
-            sx={{
-              margin: "0 10px",
-              maxWidth: "95%",
-              overflowWrap: "break-word",
-            }}
-          >
-            {" "}
-            {collection.image_url ? collection.image_url : ""}
-          </Typography>
-        )}
-      </Grid>
-      <Grid container justifyContent="space-between" margin="24px 0">
-        <Typography variant="modalTitle" sx={{ color: "#0F7F90" }}>
           Make this Collection Public:{" "}
         </Typography>
         {isEdit ? (
@@ -299,6 +287,27 @@ export const EditCollectionForm = ({
             {collection.parent_collection_id
               ? parentCollection.name ?? collection.parent_collection_id
               : ""}
+          </Typography>
+        )}
+      </Grid>
+      <Grid container justifyContent="space-between" margin="24px 0">
+        <Typography variant="modalTitle" sx={{ color: "#0F7F90" }}>
+          Linked Project:{" "}
+        </Typography>
+
+        {isEdit ? (
+          <Autocomplete
+            options={projectOptions}
+            value={selectedProjectToLink}
+            onChange={(_e, selectedOption) =>
+              setSelectedProjectToLink(selectedOption)
+            }
+            sx={{ width: "204px", height: "45px" }}
+            renderInput={(params) => <TextField {...params} />}
+          ></Autocomplete>
+        ) : (
+          <Typography>
+            {selectedProjectToLink?.label || collection.project_id || ""}
           </Typography>
         )}
       </Grid>

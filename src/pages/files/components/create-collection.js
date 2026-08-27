@@ -18,6 +18,7 @@ export const CreateCollection = ({ user }) => {
     label: "root",
     value: 1,
   });
+  const [selectedProjectToLink, setSelectedProjectToLink] = useState(null);
   const owner_id = user.id;
   const handleClickOpenDialog = () => {
     setOpenDialog(true);
@@ -26,6 +27,7 @@ export const CreateCollection = ({ user }) => {
     setOpenDialog(false);
     setFilesToAdd([]);
     setCollectionsToAdd([]);
+    setSelectedProjectToLink(null);
   };
   const queryClient = useQueryClient();
   const { mutateAsync, isLoading, error } = useMutation(createCollection, {
@@ -36,6 +38,7 @@ export const CreateCollection = ({ user }) => {
         label: "root",
         value: 1,
       });
+      setSelectedProjectToLink(null);
       setFilesToAdd([]);
       setCollectionsToAdd([]);
       setOpenDialog(false);
@@ -107,6 +110,9 @@ export const CreateCollection = ({ user }) => {
         : null;
       payload.accessibility =
         payload.accessibility === "on" ? "open" : "locked";
+      payload.project_id = selectedProjectToLink
+        ? selectedProjectToLink.value
+        : null;
       await mutateAsync(payload);
     } catch (e) {
       console.error(e);
@@ -148,6 +154,8 @@ export const CreateCollection = ({ user }) => {
         allUserFiles={allUserFiles?.files}
         selectedParentToAdd={selectedParentToAdd}
         setSelectedParentToAdd={setSelectedParentToAdd}
+        selectedProjectToLink={selectedProjectToLink}
+        setSelectedProjectToLink={setSelectedProjectToLink}
       />
     </Box>
   );
