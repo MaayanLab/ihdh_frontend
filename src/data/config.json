@@ -28,28 +28,16 @@
       "description": "The development of the Innovative Health Data Hub (IHDH) is made possible by generous support from the Steven & Alexandra Cohen Foundation. Launched in 2015, the initiative initially sought to advance research for tickborne illnesses, but since then expanded to cover other disease areas were there is an unmet need for investment.",
       "links": [
         {
-          "text": "Home",
-          "url": "https://ihdh.io/"
-        },
-        {
           "text": "Documentation",
           "url": "https://ihdh.io/user_guide.pdf"
         },
         {
           "text": "Research Projects",
-          "url": "https://lymemind.org/research-projects"
+          "url": "https://ihdh.io/projects"
         },
         {
-          "text": "Consortium",
-          "url": "https://lymemind.org/consortium"
-        },
-        {
-          "text": "Team",
-          "url": "https://lymemind.org/team"
-        },
-        {
-          "text": "About",
-          "url": "https://lymemind.org/about"
+          "text": "The Foundation",
+          "url": "https://www.steveandalex.org/"
         }
       ]
     }
@@ -95,11 +83,6 @@
         "service": "Google",
         "icon_service": "/image/google-icon.svg",
         "url": "https://BASE_URL/api/user/login/google"
-      },
-      {
-        "service": "ORCID",
-        "icon_service": "/image/orcid-icon.svg",
-        "url": "https://BASE_URL/api/user/login/orcid"
       }
     ],
     "twitter": {
