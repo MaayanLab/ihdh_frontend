@@ -94,6 +94,11 @@ export const NavBar = () => {
               />
             </Link>
           </Typography>
+          <Button variant="text" className="termsButton" style={{ marginRight: "20px" }}>
+            <Link to="/projects" style={{ textDecoration: "none", color: "inherit" }}>
+              Projects
+            </Link>
+          </Button>
           <Button
             variant="text"
             onClick={handleOpenTerms}
@@ -102,7 +107,10 @@ export const NavBar = () => {
             Terms and Conditions
           </Button>
           <TermsConditionsModal isOpen={openTerms} onClose={handleCloseTerms} />
-          {data.startpage.sso.length > 1 ? (
+          <Button variant="primary" onClick={handleOpen}>
+              Log In
+            </Button>
+          {/* {data.startpage.sso.length > 1 ? (
             <Button variant="primary" onClick={handleOpen}>
               Log In
             </Button>
@@ -119,7 +127,7 @@ export const NavBar = () => {
               />{" "}
               Sign in
             </Button>
-          )}
+          )} */}
           <Modal
             open={open}
             onClose={handleClose}
@@ -143,7 +151,7 @@ export const NavBar = () => {
                     variant="body2"
                     sx={{ color: "#0F7F90" }}
                   >
-                    Login with one of this options
+                    Log in with Google
                   </Typography>
                 </Grid>
                 <Grid item justifyContent="flex-end" marginRight="-10px">
@@ -167,6 +175,9 @@ export const NavBar = () => {
                 ))}
               </Box>
               <Typography id="modal-modal-description" variant="body4">
+                If you are a new user, please log in with your Google account to create an account on IHDH. Then "Request Contributor Role" to gain access to data. 
+                <br></br>
+                <br></br>
                 Note: IHDH uses Google for authentication purposes
                 only. The application will not have access to your private data,
                 and will not send you any e-mails.
