@@ -17,11 +17,21 @@ const Container = styled("div")(({ theme }) => ({
   backgroundColor: "#FAFAFA",
   paddingBottom: "120px",
 
+  "& .titleSection": {
+    fontSize: "clamp(28px, 4vw, 48px)",
+  },
+  "& .statsBox": {
+    marginLeft: "clamp(12px, 2vw, 30px)",
+  },
+  "& .statsCollection": {
+    fontSize: "clamp(20px, 2.5vw, 34px)",
+  },
+  "& .statsTitle": {
+    fontSize: "clamp(16px, 1.6vw, 24px)",
+  },
+
   [theme.breakpoints.down("lg")]: {
     paddingBottom: "20px",
-    "& .titleSection": {
-      fontSize: "32px",
-    },
     "& .gridContainer": {
       margin: "20px auto",
     },
@@ -32,21 +42,23 @@ const Container = styled("div")(({ theme }) => ({
       display: "none",
     },
     "& .statsBox": {
-      marginLeft: "15px",
       marginRight: "15px",
     },
     "& .collectionIcons": {
       display: "none",
     },
-    "& .statsCollection": {
-      fontSize: "18px",
-    },
-    "& .statsTitle": {
-      fontSize: "20px",
-    },
   },
   [theme.breakpoints.up("md")]: {},
 }));
+
+const iconSize = "clamp(2rem, 4vw, 4.5rem)";
+const statCellSx = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: "clamp(12px, 2vw, 24px) clamp(8px, 1.5vw, 16px)",
+  borderRight: "1px solid #B0C9CB",
+};
 
 export const AvailableData = () => {
   const { data: stats, isLoading, error } = useQuery("stats", getStats);
@@ -86,22 +98,14 @@ export const AvailableData = () => {
           background: "#EFF4F5",
           // maxWidth: "1150px",
           margin: "80px auto",
-          padding: "32px 57px",
+          padding: "clamp(16px, 3vw, 32px) clamp(16px, 5vw, 57px)",
           borderRadius: "8px",
         }}
       >
-        <Grid
-          item
-          sm={2}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            borderRight: "1px solid #B0C9CB",
-          }}
-        >
+        <Grid item sm={2} sx={statCellSx}>
           {/* <img src={avaIcon2} alt="Icon" className="collectionIcons" /> */}
-          <Icon path={mdilBank} size={3} style={{color: "#42958d"}} />
-          <Box sx={{ marginLeft: "30px" }} className="statsBox">
+          <Icon path={mdilBank} size={iconSize} style={{color: "#42958d"}} />
+          <Box className="statsBox">
             <Typography variant="subtitle3" className="statsCollection">
               36
             </Typography>
@@ -110,18 +114,10 @@ export const AvailableData = () => {
             </Typography>
           </Box>
         </Grid>
-        <Grid
-          item
-          sm={2}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            borderRight: "1px solid #B0C9CB",
-          }}
-        >
+        <Grid item sm={2} sx={statCellSx}>
           {/* <img src={avaIcon} alt="Icon" className="collectionIcons" /> */}
-          <Icon path={mdilArrangeSendToBack} size={3} style={{color: "#42958d"}} />
-          <Box sx={{ marginLeft: "30px" }} className="statsBox">
+          <Icon path={mdilArrangeSendToBack} size={iconSize} style={{color: "#42958d"}} />
+          <Box className="statsBox">
             <Typography variant="subtitle3" className="statsCollection">
               {stats.datasets}
             </Typography>
@@ -130,18 +126,10 @@ export const AvailableData = () => {
             </Typography>
           </Box>
         </Grid>
-        <Grid
-          item
-          sm={2}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            borderRight: "1px solid #B0C9CB",
-          }}
-        >
+        <Grid item sm={2} sx={statCellSx}>
           {/* <img src={avaIcon2} alt="Icon" className="collectionIcons" /> */}
-          <Icon path={mdilFile} size={3} style={{color: "#42958d"}} />
-          <Box sx={{ marginLeft: "30px" }} className="statsBox">
+          <Icon path={mdilFile} size={iconSize} style={{color: "#42958d"}} />
+          <Box className="statsBox">
             <Typography variant="subtitle3" className="statsCollection">
               {stats.files}
             </Typography>
@@ -151,18 +139,10 @@ export const AvailableData = () => {
           </Box>
         </Grid>
         
-        <Grid
-          item
-          sm={2}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            borderRight: "1px solid #B0C9CB",
-          }}
-        >
+        <Grid item sm={2} sx={statCellSx}>
           {/* <img src={avaIcon3} alt="Icon" className="collectionIcons" /> */}
-          <Icon path={mdilFileMultiple} size={3} style={{color: "#42958d"}} />
-          <Box sx={{ marginLeft: "30px" }} className="statsBox">
+          <Icon path={mdilFileMultiple} size={iconSize} style={{color: "#42958d"}} />
+          <Box className="statsBox">
             <Typography variant="subtitle3" className="statsCollection">
               {stats.file_types}
             </Typography>
@@ -172,10 +152,14 @@ export const AvailableData = () => {
           </Box>
         </Grid>
 
-        <Grid item sm={2} sx={{ display: "flex", justifyContent: "center" }}>
+        <Grid
+          item
+          sm={2}
+          sx={{ ...statCellSx, borderRight: "none" }}
+        >
           {/* <img src={avaIcon1} alt="Icon" className="collectionIcons" /> */}
-          <Icon path={mdilChartPie} size={3} style={{color: "#42958d"}} />
-          <Box sx={{ marginLeft: "30px" }} className="statsBox">
+          <Icon path={mdilChartPie} size={iconSize} style={{color: "#42958d"}} />
+          <Box className="statsBox">
             <Typography variant="subtitle3" className="statsCollection">
               {getReadableFileSizeString(stats.size)}
             </Typography>

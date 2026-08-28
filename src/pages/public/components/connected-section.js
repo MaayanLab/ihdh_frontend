@@ -31,7 +31,7 @@ export const StayConnected = () => {
       >
         {data.general.socialmedia.map(({ alt_name, url, icon_url }, i) => (
           <Grid item key={i}>
-            <Button variant="secondary" href={url} className="mediaButtons">
+            <Button variant="secondary" href={url} className="mediaButtons" target="blank" rel="noopener noreferrer">
               <img
                 src={icon_url}
                 alt="Github icon"
