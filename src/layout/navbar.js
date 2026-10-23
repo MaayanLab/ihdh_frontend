@@ -66,7 +66,7 @@ export const NavBar = () => {
   const navigate = useNavigate();
 
   const handleLoginRedirection = (url) => {
-    if (process.env.NODE_ENV === "development") {
+    if (import.meta.env.DEV) {
       navigate("/search");
     } else {
       window.location.replace(url);

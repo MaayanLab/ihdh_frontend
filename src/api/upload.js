@@ -1,7 +1,7 @@
 import axios from "axios";
 import data from "../data/config.json";
 
-const baseURL = process.env.REACT_APP_BASE_API_URL;
+const baseURL = import.meta.env.VITE_BASE_API_URL;
 
 // Small file upload URL
 const FILE_UPLOAD_URL = baseURL + "/file/upload";
